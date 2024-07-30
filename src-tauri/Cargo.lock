@@ -437,6 +437,7 @@ dependencies = [
 [[package]]
 name = "cross-visa"
 version = "0.1.0"
+source = "git+https://github.com/LiorBuch/VisaDeviceHandler#c06785eed74fd032afb2d1f89cced699a103ab47"
 dependencies = [
  "dlopen",
  "serde",
