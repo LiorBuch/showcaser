@@ -1,0 +1,14 @@
+@keyframes pulse {
+  from {
+    background-size:100% 100%;
+    background-position: 50% 50%;
+  }
+  to {
+    background-size:150% 150%;
+    background-position: 50% 50%;
+  }
+}
+.logInBackground {
+  background: radial-gradient(circle, #0becb2 0%, #9e1b79 100%);
+  animation: pulse 6s linear infinite alternate;
+}
