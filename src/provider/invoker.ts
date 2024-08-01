@@ -2,9 +2,9 @@ import { invoke } from "@tauri-apps/api/core";
 import { DeviceType } from "./types";
 
 export function get_devices(): Promise<DeviceType[] | null> {
+  console.log("search")
   let device_list = invoke<DeviceType[]>("find_devices")
     .then((res) => {
-      console.log(device_list);
       return res;
     })
     .catch((e) => {
@@ -24,7 +24,7 @@ export function connect(device: DeviceType) {
     });
 }
 export function disconnect(device: DeviceType) {
-  invoke<DeviceType>("disconnect_device", { address: device.address })
+  invoke<DeviceType>("disconnect_device", { address: device.name })
     .then((device) => {
       console.log(device);
       console.log("was disconnected");

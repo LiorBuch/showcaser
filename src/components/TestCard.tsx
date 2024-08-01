@@ -6,18 +6,17 @@ import { DeviceType } from "../provider/types";
 export function TestCard({ device }: { device: DeviceType }) {
   const [typeFunc, setTypeFunc] = useState("write");
   const [functionName, setfunctionName] = useState("");
-  const [functionArgs, setfunctionArgs] = useState("");
 
   const mapTarget = () => {
     switch (typeFunc) {
       case "write":
-        write(device, functionName + " " + functionArgs);
+        write(device, functionName);
         break;
       case "read":
         read(device);
         break;
       case "query":
-        query(device, functionName + " " + functionArgs);
+        query(device, functionName);
         break;
       case "connect":
         connect(device);
@@ -45,18 +44,14 @@ export function TestCard({ device }: { device: DeviceType }) {
             { label: "Disconnect", value: "disconnect" },
           ]}
         />
-        <TextInput
-          label="function name"
-          value={functionName}
-          placeholder="function name here"
-          onChange={(event) => setfunctionName(event.currentTarget.value)}
-        />
-        <TextInput
-          label="function args"
-          value={functionArgs}
-          placeholder="function args here"
-          onChange={(event) => setfunctionArgs(event.currentTarget.value)}
-        />
+        {(typeFunc !== "connect" && typeFunc !== "disconnect") && <>
+          <TextInput
+            label="function name"
+            value={functionName}
+            placeholder="function name here"
+            onChange={(event) => setfunctionName(event.currentTarget.value)}
+          />
+        </>}
         <Button onClick={mapTarget}>Test</Button>
       </Flex>
     </Card>

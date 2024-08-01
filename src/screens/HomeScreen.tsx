@@ -11,7 +11,12 @@ function HomeScreen() {
   const findDevices = () => {
     get_devices()
       .then((result) => {
-        setData(result ? result : []);
+        console.log(result)
+        if(result){
+          console.log("ok")
+          setData(result);
+        }
+        
       })
       .catch((_e) => {
         console.error("error");
@@ -23,7 +28,7 @@ function HomeScreen() {
         <Stack gap={"lg"}>
           <Flex gap={"md"} p={"md"}>
             <Text>Select Device</Text>
-            <Button onClick={() => findDevices}>Fetch</Button>
+            <Button onClick={() => findDevices()}>Fetch</Button>
             <Select
               label="select device"
               data={data.map((device) => device.name)}
@@ -35,6 +40,7 @@ function HomeScreen() {
           </Flex>
           {value && (
             <>
+              <TestCard device={value!} />
               <TestCard device={value!} />
               <TestCard device={value!} />
               <TestCard device={value!} />

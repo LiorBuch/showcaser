@@ -1,13 +1,14 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
-use cross_visa::{types::Device, visa_module::SafeDeviceMap};
+use visa_device_handler::{types::Device, visa_module::SafeDeviceMap};
 use tauri::State;
 
 
 fn main() {
+    let state = SafeDeviceMap::init(None).unwrap();
     tauri::Builder::default()
-        .manage(SafeDeviceMap::init(None))
+        .manage(state)
         .invoke_handler(tauri::generate_handler![
             find_devices,
             connect_device,
@@ -22,7 +23,7 @@ fn main() {
 
 #[tauri::command]
 fn find_devices(state: State<SafeDeviceMap>) -> Result<Vec<Device>,String> {
-    let result = state.find_all_devices()?;
+    let result = state.find_all_devices(true)?;
     Ok(result)
 }
 #[tauri::command]
@@ -48,5 +49,6 @@ fn read_from_device(name:&str, state: State<SafeDeviceMap>) -> Result<String,Str
 #[tauri::command]
 fn query_from_device(name:&str,msg:&str, state: State<SafeDeviceMap>) -> Result<String,String> {
     let result = state.query_from_device(name.to_string(),msg)?;
+    println!("result of {result}");
     Ok(result)
 }

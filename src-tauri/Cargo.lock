@@ -435,17 +435,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "cross-visa"
-version = "0.1.0"
-source = "git+https://github.com/LiorBuch/VisaDeviceHandler#c06785eed74fd032afb2d1f89cced699a103ab47"
-dependencies = [
- "dlopen",
- "serde",
- "serde_json",
- "visa",
-]
-
-[[package]]
 name = "crossbeam-channel"
 version = "0.5.13"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2842,12 +2831,12 @@ dependencies = [
 name = "showcaser"
 version = "0.0.0"
 dependencies = [
- "cross-visa",
  "serde",
  "serde_json",
  "tauri",
  "tauri-build",
  "tauri-plugin-shell",
+ "visa-device-handler",
 ]
 
 [[package]]
@@ -3786,6 +3775,16 @@ checksum = "c4838f32407b334a18c3ad62a31fc7ff130e76d158e07949da097398e272f3dd"
 dependencies = [
  "dlopen",
  "dlopen_derive",
+]
+
+[[package]]
+name = "visa-device-handler"
+version = "0.3.0"
+dependencies = [
+ "dlopen",
+ "serde",
+ "serde_json",
+ "visa",
 ]
 
 [[package]]
