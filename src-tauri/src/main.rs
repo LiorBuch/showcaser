@@ -49,6 +49,5 @@ fn read_from_device(name:&str, state: State<SafeDeviceMap>) -> Result<String,Str
 #[tauri::command]
 fn query_from_device(name:&str,msg:&str, state: State<SafeDeviceMap>) -> Result<String,String> {
     let result = state.query_from_device(name.to_string(),msg)?;
-    println!("result of {result}");
     Ok(result)
 }

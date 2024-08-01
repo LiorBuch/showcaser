@@ -1,5 +1,6 @@
 export interface IAppGeneral {
-    setAuth: (val: boolean) => void;
+    okNotification: (data:string) => void;
+    failNotification: (error:string) => void;
 }
 export type AppContextType = {
     appManager: IAppGeneral;

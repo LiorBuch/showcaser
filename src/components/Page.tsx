@@ -1,6 +1,5 @@
-import { AppShell, Group, Flex, Button, Modal, Stack } from "@mantine/core";
+import { AppShell, Group, Flex } from "@mantine/core";
 import { PropsWithChildren, ReactNode } from "react";
-import { Settings } from "react-feather";
 
 function Page({
   children,

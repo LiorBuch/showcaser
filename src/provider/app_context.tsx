@@ -1,22 +1,36 @@
-import React, { createContext, useState } from "react";
+import React, { createContext } from "react";
 import { AppContextType } from "./types";
+import { notifications } from "@mantine/notifications";
+import { ThumbsUp, XOctagon } from "react-feather";
 
 
 export const AppContext = createContext<AppContextType | null>(null);
-function delay(ms: number) {
-  return new Promise( resolve => setTimeout(resolve, ms) );
-}
 const AppContextProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [currentTest, setTestIndex] = useState(0);
-  const [auth, setAuth] = useState(true);
+  const okData = (data:string) =>{
+    notifications.show({
+      title: "OK",
+      message:data,
+      color:'green',
+      icon:<ThumbsUp size={"1.3rem"}/>
+    })
+  }
+  const failData = (error:string) =>{
+    notifications.show({
+      title: "Error",
+      message:error,
+      color:'red',
+      icon:<XOctagon/>
+    })
+  }
 
   return (
     <AppContext.Provider
       value={{
         appManager: {
-          setAuth: setAuth,
+          failNotification:failData,
+          okNotification:okData
         }
       }}
     >
