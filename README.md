@@ -1,6 +1,9 @@
-# Tauri + React + Typescript
+# VisaDeviceHandler Showcase App
 
-This template should help get you started developing with Tauri, React and Typescript in Vite.
+This project gives a sample on how to use rust `visa-device-handler` with a tauri project.  
+As for ease of use, i used Vite,React and Mantine for UI.
+
+All the frontend calls use invoke and the `[SafeDeviceMap]` is a state being managed by the rust backend.
 
 ## Recommended IDE Setup
 
