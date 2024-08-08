@@ -23,7 +23,7 @@ fn main() {
 
 #[tauri::command]
 fn find_devices(state: State<SafeDeviceMap>) -> Result<Vec<Device>,String> {
-    let result = state.find_all_devices(Some("?*INSTR"),true)?;
+    let result = state.find_all_devices(Some("USB?*INSTR"),true)?;
     Ok(result)
 }
 #[tauri::command]

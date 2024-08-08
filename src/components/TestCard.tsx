@@ -20,7 +20,7 @@ export function TestCard({ device }: { device: DeviceType }) {
       });
   }
   const disconnect = (device: DeviceType) => {
-    invoke<DeviceType>("disconnect_device", { address: device.name })
+    invoke<DeviceType>("disconnect_device", { name: device.name })
       .then((ret) => {
         console.log(ret);
         console.log("was disconnected");
@@ -32,7 +32,7 @@ export function TestCard({ device }: { device: DeviceType }) {
       });
   }
   const write = (device: DeviceType, msg: String) => {
-    invoke("write_to_device", { address: device.name, msg: msg })
+    invoke("write_to_device", { name: device.name, msg: msg })
       .then(() => {
         console.log("command written");
         ctx.okNotification("Command sent to device!")
