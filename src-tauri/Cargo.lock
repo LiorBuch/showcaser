@@ -3780,6 +3780,8 @@ dependencies = [
 [[package]]
 name = "visa-device-handler"
 version = "0.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "46f879cb01577eb9196d7cfcd4476f957fc2cc786ba80f22355f2bbd1cf73b95"
 dependencies = [
  "dlopen",
  "serde",
